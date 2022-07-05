@@ -1,10 +1,11 @@
-import { NODE_ENV, PORT } from '@configs/ENV';
+import { NODE_ENV, PORT, LOG_FORMAT,CREDENTIALS,ORIGIN } from '@configs/ENV';
 import { IRoutes } from '@interfaces/routes.interface';
 import errorMiddleware from '@middlewares/error.middleware';
-import { logger } from '@utils/logger';
+import { logger, stream } from '@utils/logger';
 import cors from 'cors';
 import express, { Application } from 'express';
 import helmet from 'helmet';
+import morgan from 'morgan';
 
 class App {
   public app: Application;
@@ -26,6 +27,7 @@ class App {
       logger.info(`=================================`);
       logger.info(`======= ENV: ${this.env} =======`);
       logger.info(`🚀 App listening on the port ${this.port}`);
+      logger.info(`============ CORELAB ============`);
       logger.info(`=================================`);
     });
   }
@@ -35,7 +37,8 @@ class App {
   }
 
   private initializeMiddlewares() {
-    this.app.use(cors());
+    this.app.use(morgan(LOG_FORMAT, { stream }));
+    this.app.use(cors({ origin: ORIGIN, credentials: CREDENTIALS }));
     this.app.use(helmet());
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
