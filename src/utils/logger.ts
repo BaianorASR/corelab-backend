@@ -14,7 +14,7 @@ if (!existsSync(logDir)) {
 
 // Define log format
 const logFormat = winston.format.printf(
-  ({ timestamp, level, message }) => `${timestamp} ${level}: ${message}`,
+  ({ level, message }) => `${level}: ${message}`,
 );
 
 /*

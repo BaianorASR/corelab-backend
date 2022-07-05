@@ -1,3 +1,4 @@
+import 'express-async-errors'
 import { NODE_ENV, PORT, LOG_FORMAT,CREDENTIALS,ORIGIN } from '@configs/ENV';
 import { IRoutes } from '@interfaces/routes.interface';
 import errorMiddleware from '@middlewares/error.middleware';
