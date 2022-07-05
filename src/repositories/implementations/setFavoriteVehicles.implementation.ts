@@ -5,19 +5,19 @@ import { ISetFavoriteVehiclesRepository } from '../interfaces/ISetFavoriteVehicl
 class SetFavoriteVehiclesImplementation implements ISetFavoriteVehiclesRepository {
   vehicles = prismaClient.vehicles;
 
-  public async setFavoriteVehicles(id: number): Promise<void> {
-    const lastFavoriteVehicles = await this.lastFavoriteVehicles(id);
+  public async setFavoriteVehicles(vehicleId: string): Promise<void> {
+    const lastFavoriteVehicles = await this.lastFavoriteVehicles(vehicleId);
     await this.vehicles.update({
-      where: { id },
+      where: { id: vehicleId },
       data: {
         isFavorite: !lastFavoriteVehicles,
       },
     });
   }
 
-  private async lastFavoriteVehicles(id: number): Promise<boolean> {
+  private async lastFavoriteVehicles(vehicleId: string): Promise<boolean> {
     const lastFavoriteVehicles = await this.vehicles.findUnique({
-      where: { id },
+      where: { id: vehicleId },
       select: { isFavorite: true },
     });
     return lastFavoriteVehicles.isFavorite;

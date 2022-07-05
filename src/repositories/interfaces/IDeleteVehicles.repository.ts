@@ -1,5 +1,5 @@
 interface IDeleteVehiclesRepository {
-  delete(id: number): Promise<void>;
+  delete(vehicleId: string): Promise<void>;
 }
 
 export { IDeleteVehiclesRepository };

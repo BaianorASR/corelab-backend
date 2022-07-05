@@ -1,5 +1,5 @@
 interface ISetFavoriteVehiclesRepository {
-  setFavoriteVehicles(id: number): Promise<void>;
+  setFavoriteVehicles(vehicleId: string): Promise<void>;
 }
 
 export { ISetFavoriteVehiclesRepository };

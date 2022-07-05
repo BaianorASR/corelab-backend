@@ -3,8 +3,8 @@ import { IDeleteVehiclesRepository } from '@/repositories/interfaces/IDeleteVehi
 class DeleteVehiclesUseCase {
   constructor(private repository: IDeleteVehiclesRepository) {}
 
-  public async execute(id: number): Promise<void> {
-    const oi = await this.repository.delete(id);
+  public async execute(vehicleId: string): Promise<void> {
+    const oi = await this.repository.delete(vehicleId);
     console.log(oi);
     return oi as unknown as void;
   }

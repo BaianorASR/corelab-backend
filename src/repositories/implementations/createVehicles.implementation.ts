@@ -7,7 +7,7 @@ import {
 } from '../interfaces/ICreateVehicles.repository';
 
 class CreateVehiclesImplementation implements ICreateVehiclesRepository {
-  vehicles = prismaClient.vehicles;
+  private vehicles = prismaClient.vehicles;
 
   async createVehicles(vehicle: ICreateVehiclesData): Promise<IVehicleDTOs> {
     const lastVehicleRegister = await this.vehicles.create({

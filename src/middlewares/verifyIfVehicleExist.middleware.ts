@@ -7,7 +7,7 @@ class VerifyIfVehicleExist {
   public async validate(request: Request, response: Response, next: NextFunction) {
     const { vehicles } = prismaClient;
     const { id } = request.params;
-    const vehicle = await vehicles.findUnique({ where: { id: Number(id) } });
+    const vehicle = await vehicles.findUnique({ where: { id } });
 
     if (!vehicle) throw new HttpException(404, 'Vehicle not found');
     next();

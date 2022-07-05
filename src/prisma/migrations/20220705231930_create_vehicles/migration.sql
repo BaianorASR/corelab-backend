@@ -1,6 +1,6 @@
 -- CreateTable
 CREATE TABLE `Vehicles` (
-    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `id` VARCHAR(191) NOT NULL,
     `name` VARCHAR(191) NOT NULL,
     `description` VARCHAR(191) NOT NULL,
     `plate` VARCHAR(191) NOT NULL,

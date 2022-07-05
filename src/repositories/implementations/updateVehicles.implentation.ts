@@ -8,9 +8,9 @@ import {
 class UpdateVehiclesImplementation implements IUpdateVehiclesRepository {
   vehicles = prismaClient.vehicles;
 
-  async updateVehicles(id: number, vehicles: IUpdateVehiclesData): Promise<void> {
+  async updateVehicles(vehicleId: string, vehicles: IUpdateVehiclesData): Promise<void> {
     await this.vehicles.update({
-      where: { id },
+      where: { id: vehicleId },
       data: {
         ...vehicles,
       },
