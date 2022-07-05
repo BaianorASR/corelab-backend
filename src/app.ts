@@ -1,12 +1,14 @@
 import 'express-async-errors';
-import { NODE_ENV, PORT, LOG_FORMAT, CREDENTIALS, ORIGIN } from '@configs/ENV';
-import { IRoutes } from '@interfaces/routes.interface';
-import errorMiddleware from '@middlewares/error.middleware';
-import { logger, stream } from '@utils/logger';
+
 import cors from 'cors';
 import express, { Application } from 'express';
 import helmet from 'helmet';
 import morgan from 'morgan';
+
+import { CREDENTIALS, LOG_FORMAT, NODE_ENV, ORIGIN, PORT } from '@configs/ENV';
+import { IRoutes } from '@interfaces/routes.interface';
+import errorMiddleware from '@middlewares/error.middleware';
+import { logger, stream } from '@utils/logger';
 
 class App {
   public app: Application;

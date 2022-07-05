@@ -5,9 +5,9 @@ class GetAllVehiclesUseCase {
   constructor(private repository: IGetAllVehiclesRepository) {}
 
   public async execute(): Promise<IVehicleDTOs[]> {
-    const allVehicles = await this.repository.getAllVehicles()
-    return allVehicles
+    const allVehicles = await this.repository.getAllVehicles();
+    return allVehicles;
   }
 }
 
-export { GetAllVehiclesUseCase }
+export { GetAllVehiclesUseCase };

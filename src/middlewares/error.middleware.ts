@@ -1,6 +1,8 @@
+import { NextFunction, Request, Response } from 'express';
+import StatusCode from 'http-status';
+
 import { HttpException } from '@errors/HttpException';
 import { logger } from '@utils/logger';
-import { NextFunction, Request, Response } from 'express';
 
 const errorMiddleware = (
   error: HttpException,
@@ -9,7 +11,7 @@ const errorMiddleware = (
   next: NextFunction,
 ) => {
   try {
-    const status: number = error.status || 500;
+    const status: number = error.status || StatusCode.INTERNAL_SERVER_ERROR;
     const message: string = error.message || 'Something went wrong';
     logger.error(
       `[${req.method}] ${req.path} >> StatusCode:: ${status}, Message:: ${message}`,

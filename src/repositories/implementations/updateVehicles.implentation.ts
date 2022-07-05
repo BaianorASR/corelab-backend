@@ -1,7 +1,8 @@
 import { prismaClient } from '@/database/prismaClient';
+
 import {
-  IUpdateVehiclesRepository,
   IUpdateVehiclesData,
+  IUpdateVehiclesRepository,
 } from '../interfaces/IUpdateVehicles.repository';
 
 class UpdateVehiclesImplementation implements IUpdateVehiclesRepository {

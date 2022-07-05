@@ -1,5 +1,6 @@
-import { prismaClient } from '@/database/prismaClient';
 import { IVehicleDTOs } from '@/DTOs/IVehicles.dtos';
+import { prismaClient } from '@/database/prismaClient';
+
 import {
   ICreateVehiclesData,
   ICreateVehiclesRepository,

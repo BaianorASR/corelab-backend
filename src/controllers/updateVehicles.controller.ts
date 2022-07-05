@@ -1,6 +1,8 @@
+import { Request, Response } from 'express';
+import StatusCode from 'http-status';
+
 import { IUpdateVehiclesData } from '@/repositories/interfaces/IUpdateVehicles.repository';
 import { UpdateVehiclesUseCase } from '@/usecases/updateVehicles.usecase';
-import { Request, Response } from 'express';
 
 class UpdateVehiclesController {
   constructor(private useCase: UpdateVehiclesUseCase) {}
@@ -10,7 +12,7 @@ class UpdateVehiclesController {
     const vehicles = this.getVehicleInBody(request);
 
     const result = await this.useCase.execute(Number(id), vehicles);
-    return response.status(200).json(result);
+    return response.status(StatusCode.NO_CONTENT).json(result);
   }
 
   private getVehicleInBody({ body }: Request): IUpdateVehiclesData {

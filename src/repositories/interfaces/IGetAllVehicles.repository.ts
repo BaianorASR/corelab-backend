@@ -4,4 +4,4 @@ interface IGetAllVehiclesRepository {
   getAllVehicles(): Promise<IVehicleDTOs[]>;
 }
 
-export { IGetAllVehiclesRepository }
+export { IGetAllVehiclesRepository };

@@ -1,6 +1,6 @@
 import {
-  IUpdateVehiclesRepository,
   IUpdateVehiclesData,
+  IUpdateVehiclesRepository,
 } from '@/repositories/interfaces/IUpdateVehicles.repository';
 
 class UpdateVehiclesUseCase {
