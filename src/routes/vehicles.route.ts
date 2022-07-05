@@ -1,6 +1,7 @@
 import { Request, Response, Router } from 'express';
 
 import { createVehiclesController } from '@/integrations/createVehicles.integration';
+import { deleteVehiclesController } from '@/integrations/deleteVehicles.integration';
 import { getAllVehiclesController } from '@/integrations/getAllVehicles.integration';
 import { updateVehiclesController } from '@/integrations/updateVehicles.integration';
 import { IRoutes } from '@interfaces/routes.interface';
@@ -31,6 +32,9 @@ class Vehicles implements IRoutes {
     });
     this.router.put(`${this.path}/:id`, async (req: Request, res: Response) => {
       await updateVehiclesController.handle(req, res);
+    });
+    this.router.delete(`${this.path}/:id`, async (req: Request, res: Response) => {
+      await deleteVehiclesController.handle(req, res);
     });
   }
 }

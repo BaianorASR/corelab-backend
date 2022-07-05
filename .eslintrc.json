@@ -57,6 +57,7 @@
         "ts": "never"
       }
     ],
+    "no-use-before-define": "off",
     // "import-helpers/order-imports": [
     //   "warn",
     //   {

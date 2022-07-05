@@ -11,4 +11,4 @@ class IVehicleDTOs {
   public updatedAt: Date;
 }
 
-export {  IVehicleDTOs };
+export { IVehicleDTOs };
