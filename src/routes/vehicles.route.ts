@@ -3,7 +3,9 @@ import { Request, Response, Router } from 'express';
 import { createVehiclesController } from '@/integrations/createVehicles.integration';
 import { deleteVehiclesController } from '@/integrations/deleteVehicles.integration';
 import { getAllVehiclesController } from '@/integrations/getAllVehicles.integration';
+import { setFavoriteVehiclesController } from '@/integrations/setFavoriteVehicles.integration';
 import { updateVehiclesController } from '@/integrations/updateVehicles.integration';
+import { verifyIfVehicleExist } from '@/middlewares/verifyIfVehicleExist.middleware';
 import { IRoutes } from '@interfaces/routes.interface';
 
 class Vehicles implements IRoutes {
@@ -24,18 +26,33 @@ class Vehicles implements IRoutes {
   }
 
   private initializeRoutes() {
-    this.router.get(`${this.path}`, async (req: Request, res: Response) => {
-      await getAllVehiclesController.handle(req, res);
+    this.router.get(`${this.path}`, async (request: Request, response: Response) => {
+      await getAllVehiclesController.handle(request, response);
     });
-    this.router.post(`${this.path}`, async (req: Request, res: Response) => {
-      await createVehiclesController.handle(req, res);
+    this.router.post(`${this.path}`, async (request: Request, response: Response) => {
+      await createVehiclesController.handle(request, response);
     });
-    this.router.put(`${this.path}/:id`, async (req: Request, res: Response) => {
-      await updateVehiclesController.handle(req, res);
-    });
-    this.router.delete(`${this.path}/:id`, async (req: Request, res: Response) => {
-      await deleteVehiclesController.handle(req, res);
-    });
+    this.router.put(
+      `${this.path}/:id/favorite`,
+      verifyIfVehicleExist,
+      async (request: Request, response: Response) => {
+        await setFavoriteVehiclesController.handle(request, response);
+      },
+    );
+    this.router.put(
+      `${this.path}/:id`,
+      verifyIfVehicleExist,
+      async (request: Request, response: Response) => {
+        await updateVehiclesController.handle(request, response);
+      },
+    );
+    this.router.delete(
+      `${this.path}/:id`,
+      verifyIfVehicleExist,
+      async (request: Request, response: Response) => {
+        await deleteVehiclesController.handle(request, response);
+      },
+    );
   }
 }
 

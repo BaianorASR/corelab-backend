@@ -14,7 +14,7 @@ const errorMiddleware = (
     const status: number = error.status || StatusCode.INTERNAL_SERVER_ERROR;
     const message: string = error.message || 'Something went wrong';
     logger.error(
-      `[${req.method}] ${req.path} >> StatusCode:: ${status}, Message:: ${message}`,
+      `[${req.method}] ${req.path} >> \nStatusCode:: ${status}, \nMessage:: ${message}`,
     );
     res.status(status).json({ message });
   } catch (error) {

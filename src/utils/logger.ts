@@ -1,9 +1,11 @@
-/* eslint-disable new-cap */
-import { LOG_DIR } from '@/configs/ENV';
 import { existsSync, mkdirSync } from 'fs';
 import { join } from 'path';
+
 import winston from 'winston';
 import winstonDaily from 'winston-daily-rotate-file';
+
+/* eslint-disable new-cap */
+import { LOG_DIR } from '@/configs/ENV';
 
 // logs dir
 const logDir: string = join(__dirname, LOG_DIR);
@@ -13,9 +15,7 @@ if (!existsSync(logDir)) {
 }
 
 // Define log format
-const logFormat = winston.format.printf(
-  ({ level, message }) => `${level}: ${message}`,
-);
+const logFormat = winston.format.printf(({ level, message }) => `${level}: ${message}`);
 
 /*
  * Log Level
@@ -49,7 +49,7 @@ const logger = winston.createLogger({
       handleExceptions: true,
       json: false,
       zippedArchive: true,
-    })
+    }),
   ],
 });
 

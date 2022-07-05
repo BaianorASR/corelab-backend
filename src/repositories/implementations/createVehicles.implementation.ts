@@ -8,6 +8,7 @@ import {
 
 class CreateVehiclesImplementation implements ICreateVehiclesRepository {
   vehicles = prismaClient.vehicles;
+
   async createVehicles(vehicle: ICreateVehiclesData): Promise<IVehicleDTOs> {
     const lastVehicleRegister = await this.vehicles.create({
       data: {
