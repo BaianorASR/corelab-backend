@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  db:
+    container_name: corelab_db
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_USER: root
+      MYSQL_ROOT_PASSWORD: corelab
+      MYSQL_DATABASE: corelab
+    ports:
+      - 3306:3306
+    restart: always
