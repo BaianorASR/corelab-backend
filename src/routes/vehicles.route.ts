@@ -1,5 +1,6 @@
+import { createVehiclesController } from '@/integrations/createVehicles.integration';
 import { getAllVehiclesController } from '@/integrations/getAllVehicles.integration';
-import { updateVehiclesController } from '@/integrations/updateVehicles.integrantion';
+import { updateVehiclesController } from '@/integrations/updateVehicles.integration';
 import { IRoutes } from '@interfaces/routes.interface';
 import { Request, Response, Router } from 'express';
 
@@ -24,8 +25,11 @@ class Vehicles implements IRoutes {
     this.router.get(`${this.path}`, async (req: Request, res: Response) => {
       await getAllVehiclesController.handle(req, res);
     });
-    this.router.get(`${this.path}`, async (req: Request, res: Response) => {
+    this.router.put(`${this.path}`, async (req: Request, res: Response) => {
       await updateVehiclesController.handle(req, res);
+    });
+    this.router.post(`${this.path}`, async (req: Request, res: Response) => {
+      await createVehiclesController.handle(req, res);
     });
   }
 }

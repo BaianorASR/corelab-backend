@@ -12,7 +12,7 @@ model Vehicles {
   name        String   @unique
   description String
   plate       String
-  isFavorite  Boolean
+  isFavorite  Boolean @default(false)
   year        Int
   color       String
   price       Int

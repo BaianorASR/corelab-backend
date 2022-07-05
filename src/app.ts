@@ -1,5 +1,5 @@
-import 'express-async-errors'
-import { NODE_ENV, PORT, LOG_FORMAT,CREDENTIALS,ORIGIN } from '@configs/ENV';
+import 'express-async-errors';
+import { NODE_ENV, PORT, LOG_FORMAT, CREDENTIALS, ORIGIN } from '@configs/ENV';
 import { IRoutes } from '@interfaces/routes.interface';
 import errorMiddleware from '@middlewares/error.middleware';
 import { logger, stream } from '@utils/logger';
@@ -28,7 +28,7 @@ class App {
       logger.info(`=================================`);
       logger.info(`======= ENV: ${this.env} =======`);
       logger.info(`🚀 App listening on the port ${this.port}`);
-      logger.info(`============ CORELAB ============`);
+      logger.info(`========== BY: BAIANOR ==========`);
       logger.info(`=================================`);
     });
   }

@@ -4,7 +4,7 @@ CREATE TABLE `Vehicles` (
     `name` VARCHAR(191) NOT NULL,
     `description` VARCHAR(191) NOT NULL,
     `plate` VARCHAR(191) NOT NULL,
-    `isFavorite` BOOLEAN NOT NULL,
+    `isFavorite` BOOLEAN NOT NULL DEFAULT false,
     `year` INTEGER NOT NULL,
     `color` VARCHAR(191) NOT NULL,
     `price` INTEGER NOT NULL,
