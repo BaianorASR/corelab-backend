@@ -5,7 +5,7 @@ import { deleteVehiclesController } from '@/integrations/deleteVehicles.integrat
 import { getAllVehiclesController } from '@/integrations/getAllVehicles.integration';
 import { setFavoriteVehiclesController } from '@/integrations/setFavoriteVehicles.integration';
 import { updateVehiclesController } from '@/integrations/updateVehicles.integration';
-import { validateVehicleData } from '@/middlewares/validateVehicleData';
+import { validateVehicleData } from '@/middlewares/validateVehicleData.middleware';
 import { verifyIfVehicleExist } from '@/middlewares/verifyIfVehicleExist.middleware';
 import { IRoutes } from '@interfaces/routes.interface';
 

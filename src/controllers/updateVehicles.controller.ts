@@ -11,8 +11,10 @@ class UpdateVehiclesController {
     const { id } = request.params;
     const vehicles = this.getVehicleInBody(request);
 
-    const result = await this.useCase.execute(id, vehicles);
-    return response.status(StatusCodes.NO_CONTENT).json(result);
+    await this.useCase.execute(id, vehicles);
+    return response
+      .status(StatusCodes.NO_CONTENT)
+      .json({ message: 'Vehicle updated successfully' });
   }
 
   private getVehicleInBody({ body }: Request): IUpdateVehiclesDTOs {

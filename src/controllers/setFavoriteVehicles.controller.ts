@@ -9,8 +9,10 @@ class SetFavoriteVehiclesController {
   public async handle(request: Request, response: Response) {
     const { id } = request.params;
 
-    const result = await this.useCase.execute(id);
-    return response.status(StatusCodes.OK).json(result);
+    await this.useCase.execute(id);
+    return response
+      .status(StatusCodes.OK)
+      .json({ message: 'Vehicle favorite status changed successfully' });
   }
 }
 

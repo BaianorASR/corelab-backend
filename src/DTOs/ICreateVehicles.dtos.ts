@@ -17,7 +17,7 @@ class ICreateVehiclesDTOs {
   plate: string;
 
   @IsNotEmpty()
-  @IsInt({})
+  @IsInt()
   @Min(1500)
   year: number;
 
