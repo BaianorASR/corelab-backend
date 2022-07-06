@@ -1,9 +1,7 @@
+import { IUpdateVehiclesData } from '@/DTOs/IUpdateVehiclesData.dtos';
 import { prismaClient } from '@/database/prismaClient';
 
-import {
-  IUpdateVehiclesData,
-  IUpdateVehiclesRepository,
-} from '../interfaces/IUpdateVehicles.repository';
+import { IUpdateVehiclesRepository } from '../interfaces/IUpdateVehicles.repository';
 
 class UpdateVehiclesImplementation implements IUpdateVehiclesRepository {
   vehicles = prismaClient.vehicles;

@@ -1,14 +1,35 @@
+import { IsBoolean, IsDate, IsInt, IsString } from 'class-validator';
+
 class IVehicleDTOs {
-  public id: string;
+  @IsString()
+  public id?: string;
+
+  @IsString()
   public name: string;
+
+  @IsString()
   public description: string;
+
+  @IsString()
   public plate: string;
-  public isFavorite: boolean;
+
+  @IsBoolean()
+  public isFavorite?: boolean;
+
+  @IsInt()
   public year: number;
+
+  @IsString()
   public color: string;
+
+  @IsInt()
   public price: number;
-  public createdAt: Date;
-  public updatedAt: Date;
+
+  @IsDate()
+  public createdAt?: Date;
+
+  @IsDate()
+  public updatedAt?: Date;
 }
 
 export { IVehicleDTOs };

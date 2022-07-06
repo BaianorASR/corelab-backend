@@ -8,7 +8,7 @@ class SetFavoriteVehiclesController {
   public async handle(request: Request, response: Response) {
     const { id } = request.params;
 
-    const result = await this.useCase.execute(Number(id));
+    const result = await this.useCase.execute(id);
     return response.status(200).json(result);
   }
 }

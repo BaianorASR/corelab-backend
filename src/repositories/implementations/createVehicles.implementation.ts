@@ -1,10 +1,8 @@
+import { ICreateVehiclesData } from '@/DTOs/ICreateVehiclesData.dtos';
 import { IVehicleDTOs } from '@/DTOs/IVehicles.dtos';
 import { prismaClient } from '@/database/prismaClient';
 
-import {
-  ICreateVehiclesData,
-  ICreateVehiclesRepository,
-} from '../interfaces/ICreateVehicles.repository';
+import { ICreateVehiclesRepository } from '../interfaces/ICreateVehicles.repository';
 
 class CreateVehiclesImplementation implements ICreateVehiclesRepository {
   private vehicles = prismaClient.vehicles;
