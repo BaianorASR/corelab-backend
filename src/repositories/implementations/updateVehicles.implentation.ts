@@ -1,4 +1,4 @@
-import { IUpdateVehiclesData } from '@/DTOs/IUpdateVehiclesData.dtos';
+import { IUpdateVehiclesDTOs } from '@/DTOs/IUpdateVehicles.dtos';
 import { prismaClient } from '@/database/prismaClient';
 
 import { IUpdateVehiclesRepository } from '../interfaces/IUpdateVehicles.repository';
@@ -6,7 +6,7 @@ import { IUpdateVehiclesRepository } from '../interfaces/IUpdateVehicles.reposit
 class UpdateVehiclesImplementation implements IUpdateVehiclesRepository {
   private vehicles = prismaClient.vehicles;
 
-  async updateVehicles(vehicleId: string, vehicles: IUpdateVehiclesData): Promise<void> {
+  async updateVehicles(vehicleId: string, vehicles: IUpdateVehiclesDTOs): Promise<void> {
     await this.vehicles.update({
       where: { id: vehicleId },
       data: {

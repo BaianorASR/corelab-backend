@@ -1,6 +1,6 @@
 import { IsInt, IsNotEmpty, IsString, Min, MinLength } from 'class-validator';
 
-class ICreateVehiclesData {
+class IUpdateVehiclesDTOs {
   @IsNotEmpty()
   @IsString()
   @MinLength(3)
@@ -31,12 +31,12 @@ class ICreateVehiclesData {
   price: number;
 
   constructor(
-    name = '',
-    description = '',
-    plate = '',
-    year = undefined,
-    color = '',
-    price = undefined,
+    name: string,
+    description: string,
+    plate: string,
+    year: number,
+    color: string,
+    price: number,
   ) {
     this.name = name;
     this.description = description;
@@ -47,4 +47,4 @@ class ICreateVehiclesData {
   }
 }
 
-export { ICreateVehiclesData };
+export { IUpdateVehiclesDTOs };

@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import StatusCode from 'http-status';
 
+import { StatusCodes } from '@/configs/StatusCodes';
 import { DeleteVehiclesUseCase } from '@/usecases/deleteVehicles.usecase';
 
 class DeleteVehiclesController {
@@ -10,7 +10,7 @@ class DeleteVehiclesController {
     const { id } = request.params;
     await this.useCase.execute(id);
     return response
-      .status(StatusCode.NO_CONTENT)
+      .status(StatusCodes.NO_CONTENT)
       .json({ message: `The vehicle with id: ${id} was deleted successfully` });
   }
 }

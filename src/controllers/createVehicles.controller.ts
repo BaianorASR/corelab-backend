@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
-import StatusCode from 'http-status';
 
-import { ICreateVehiclesData } from '@/DTOs/ICreateVehiclesData.dtos';
+import { ICreateVehiclesDTOs } from '@/DTOs/ICreateVehicles.dtos';
+import { StatusCodes } from '@/configs/StatusCodes';
 import { CreateVehiclesUseCase } from '@/usecases/createVehicles.usecase';
 
 class CreateController {
@@ -10,11 +10,11 @@ class CreateController {
   public async handle(request: Request, response: Response) {
     const vehicle = this.getVehicleInBody(request);
     const lastVehicleRegister = await this.useCase.execute(vehicle);
-    return response.status(StatusCode.CREATED).json(lastVehicleRegister);
+    return response.status(StatusCodes.CREATED).json(lastVehicleRegister);
   }
 
-  private getVehicleInBody({ body }: Request): ICreateVehiclesData {
-    const data: ICreateVehiclesData = {
+  private getVehicleInBody({ body }: Request): ICreateVehiclesDTOs {
+    const data: ICreateVehiclesDTOs = {
       name: body.name,
       description: body.description,
       plate: body.plate,

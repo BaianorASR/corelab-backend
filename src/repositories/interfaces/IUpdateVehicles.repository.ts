@@ -1,7 +1,7 @@
-import { IUpdateVehiclesData } from '@/DTOs/IUpdateVehiclesData.dtos';
+import { IUpdateVehiclesDTOs } from '@/DTOs/IUpdateVehicles.dtos';
 
 interface IUpdateVehiclesRepository {
-  updateVehicles: (vehicleId: string, vehicles: IUpdateVehiclesData) => Promise<void>;
+  updateVehicles: (vehicleId: string, vehicles: IUpdateVehiclesDTOs) => Promise<void>;
 }
 
 export { IUpdateVehiclesRepository };

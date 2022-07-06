@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 
+import { StatusCodes } from '@/configs/StatusCodes';
 import { SetFavoriteVehiclesUseCase } from '@/usecases/setFavoriteVehicles.usecase';
 
 class SetFavoriteVehiclesController {
@@ -9,7 +10,7 @@ class SetFavoriteVehiclesController {
     const { id } = request.params;
 
     const result = await this.useCase.execute(id);
-    return response.status(200).json(result);
+    return response.status(StatusCodes.OK).json(result);
   }
 }
 

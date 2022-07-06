@@ -1,4 +1,4 @@
-import { ICreateVehiclesData } from '@/DTOs/ICreateVehiclesData.dtos';
+import { ICreateVehiclesDTOs } from '@/DTOs/ICreateVehicles.dtos';
 import { IVehicleDTOs } from '@/DTOs/IVehicles.dtos';
 import { StatusCodes } from '@/configs/StatusCodes';
 import { prismaClient } from '@/database/prismaClient';
@@ -9,7 +9,7 @@ import { ICreateVehiclesRepository } from '../interfaces/ICreateVehicles.reposit
 class CreateVehiclesImplementation implements ICreateVehiclesRepository {
   private vehicles = prismaClient.vehicles;
 
-  async createVehicles(vehicle: ICreateVehiclesData): Promise<IVehicleDTOs> {
+  async createVehicles(vehicle: ICreateVehiclesDTOs): Promise<IVehicleDTOs> {
     await this.verifyIfVehicleExist(vehicle.name);
     const lastVehicleRegister = await this.vehicles.create({
       data: {

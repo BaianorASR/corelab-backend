@@ -14,4 +14,5 @@ class VerifyIfVehicleExist {
   }
 }
 
-export const verifyIfVehicleExist = new VerifyIfVehicleExist().validate;
+const verifyIfVehicleExist = new VerifyIfVehicleExist().validate;
+export { verifyIfVehicleExist };

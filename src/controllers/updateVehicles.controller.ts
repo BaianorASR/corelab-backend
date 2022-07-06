@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
-import StatusCode from 'http-status';
 
-import { IUpdateVehiclesData } from '@/DTOs/IUpdateVehiclesData.dtos';
+import { IUpdateVehiclesDTOs } from '@/DTOs/IUpdateVehicles.dtos';
+import { StatusCodes } from '@/configs/StatusCodes';
 import { UpdateVehiclesUseCase } from '@/usecases/updateVehicles.usecase';
 
 class UpdateVehiclesController {
@@ -12,10 +12,10 @@ class UpdateVehiclesController {
     const vehicles = this.getVehicleInBody(request);
 
     const result = await this.useCase.execute(id, vehicles);
-    return response.status(StatusCode.NO_CONTENT).json(result);
+    return response.status(StatusCodes.NO_CONTENT).json(result);
   }
 
-  private getVehicleInBody({ body }: Request): IUpdateVehiclesData {
+  private getVehicleInBody({ body }: Request): IUpdateVehiclesDTOs {
     return {
       name: body.name,
       description: body.description,
