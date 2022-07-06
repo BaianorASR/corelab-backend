@@ -8,7 +8,7 @@ class DeleteVehiclesController {
 
   public async handle(request: Request, response: Response) {
     const { id } = request.params;
-    await this.useCase.execute(Number(id));
+    await this.useCase.execute(id);
     return response
       .status(StatusCode.NO_CONTENT)
       .json({ message: `The vehicle with id: ${id} was deleted successfully` });

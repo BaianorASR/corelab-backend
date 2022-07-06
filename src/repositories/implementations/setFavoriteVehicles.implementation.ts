@@ -3,7 +3,7 @@ import { prismaClient } from '@/database/prismaClient';
 import { ISetFavoriteVehiclesRepository } from '../interfaces/ISetFavoriteVehicles.repository';
 
 class SetFavoriteVehiclesImplementation implements ISetFavoriteVehiclesRepository {
-  vehicles = prismaClient.vehicles;
+  private vehicles = prismaClient.vehicles;
 
   public async setFavoriteVehicles(vehicleId: string): Promise<void> {
     const lastFavoriteVehicles = await this.lastFavoriteVehicles(vehicleId);

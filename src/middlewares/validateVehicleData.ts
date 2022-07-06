@@ -7,10 +7,15 @@ import { StatusCodes } from '@/configs/StatusCodes';
 import { HttpException } from '@/errors/HttpException';
 
 class ValidateVehicleData {
-  public static async validate(req: Request, res: Response, next: NextFunction) {
+  public async validate(req: Request, res: Response, next: NextFunction) {
     const { name, description, plate, year, color, price } = req.body;
-    const ObjectToValidate =
-      req.method === 'POST' ? ICreateVehiclesData : IUpdateVehiclesData;
+
+    const METHODS_CLASS_DATA = {
+      POST: ICreateVehiclesData,
+      PUT: IUpdateVehiclesData,
+    };
+
+    const ObjectToValidate = METHODS_CLASS_DATA[req.method];
 
     const data = new ObjectToValidate(name, description, plate, year, color, price);
 
@@ -23,5 +28,5 @@ class ValidateVehicleData {
   }
 }
 
-const validateVehicleData = ValidateVehicleData.validate;
+const validateVehicleData = new ValidateVehicleData().validate;
 export { validateVehicleData };

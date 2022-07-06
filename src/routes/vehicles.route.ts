@@ -34,6 +34,7 @@ class Vehicles implements IRoutes {
     this.router.post(
       `${this.path}`,
       validateVehicleData,
+      // verifyIfVehicleExist,
       async (request: Request, response: Response) => {
         await createVehiclesController.handle(request, response);
       },

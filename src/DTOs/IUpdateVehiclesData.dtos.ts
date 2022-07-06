@@ -18,7 +18,6 @@ class IUpdateVehiclesData {
 
   @IsNotEmpty()
   @IsInt({})
-  @MinLength(4)
   @Min(1500)
   year: number;
 

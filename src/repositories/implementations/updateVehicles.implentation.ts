@@ -4,7 +4,7 @@ import { prismaClient } from '@/database/prismaClient';
 import { IUpdateVehiclesRepository } from '../interfaces/IUpdateVehicles.repository';
 
 class UpdateVehiclesImplementation implements IUpdateVehiclesRepository {
-  vehicles = prismaClient.vehicles;
+  private vehicles = prismaClient.vehicles;
 
   async updateVehicles(vehicleId: string, vehicles: IUpdateVehiclesData): Promise<void> {
     await this.vehicles.update({

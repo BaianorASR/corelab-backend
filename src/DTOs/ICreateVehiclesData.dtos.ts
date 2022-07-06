@@ -18,7 +18,6 @@ class ICreateVehiclesData {
 
   @IsNotEmpty()
   @IsInt({})
-  @MinLength(4)
   @Min(1500)
   year: number;
 
