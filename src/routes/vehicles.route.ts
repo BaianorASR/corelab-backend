@@ -6,6 +6,7 @@ import { deleteVehiclesController } from '@/integrations/deleteVehicles.integrat
 import { filtersOptionsVehiclesController } from '@/integrations/filtersOptionsVehicles.integration';
 import { getAllVehiclesController } from '@/integrations/getAllVehicles.integration';
 import { getFavoritesVehiclesController } from '@/integrations/getFavoritesVehicles.integration';
+import { searchVehiclesController } from '@/integrations/searchVehicles.integration';
 import { updateVehiclesController } from '@/integrations/updateVehicles.integration';
 import { validateVehicleData } from '@/middlewares/validateVehicleData.middleware';
 import { verifyIfVehicleExist } from '@/middlewares/verifyIfVehicleExist.middleware';
@@ -58,6 +59,20 @@ class Vehicles implements IRoutes {
       },
     );
 
+    this.router.get(
+      `${this.path}/filters`,
+      async (request: Request, response: Response) => {
+        await filtersOptionsVehiclesController.handle(request, response);
+      },
+    );
+
+    this.router.get(
+      `${this.path}/search`,
+      async (request: Request, response: Response) => {
+        await searchVehiclesController.handle(request, response);
+      },
+    );
+
     this.router.put(
       `${this.path}/:id`,
       validateVehicleData,
@@ -72,13 +87,6 @@ class Vehicles implements IRoutes {
       verifyIfVehicleExist,
       async (request: Request, response: Response) => {
         await deleteVehiclesController.handle(request, response);
-      },
-    );
-
-    this.router.get(
-      `${this.path}/filters`,
-      async (request: Request, response: Response) => {
-        await filtersOptionsVehiclesController.handle(request, response);
       },
     );
   }

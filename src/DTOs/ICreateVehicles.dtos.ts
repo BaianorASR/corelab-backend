@@ -21,9 +21,9 @@ class ICreateVehiclesDTOs {
   plate: string;
 
   @IsNotEmpty()
-  @IsInt()
-  @Min(1500)
-  year: number;
+  @IsString()
+  @MinLength(4)
+  year: string;
 
   @IsNotEmpty()
   @IsString()
@@ -39,7 +39,7 @@ class ICreateVehiclesDTOs {
     brand: string,
     description: string,
     plate: string,
-    year: number,
+    year: string,
     color: string,
     price: number,
   ) {
