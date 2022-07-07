@@ -1,18 +1,22 @@
 import { prismaClient } from '@/database/prismaClient';
 
-import { ISetFavoriteVehiclesRepository } from '../interfaces/ISetFavoriteVehicles.repository';
+import { IChangeStatusVehiclesRepository } from '../interfaces/IChangeStatusFavoriteVehicles';
 
-class SetFavoriteVehiclesImplementation implements ISetFavoriteVehiclesRepository {
+class ChangeStatusVehiclesImplementation implements IChangeStatusVehiclesRepository {
   private vehicles = prismaClient.vehicles;
 
-  public async setFavoriteVehicles(vehicleId: string): Promise<void> {
+  public async changeStatusVehicles(vehicleId: string): Promise<boolean> {
     const lastFavoriteVehicles = await this.lastFavoriteVehicles(vehicleId);
-    await this.vehicles.update({
+    const vehicleUpdated = await this.vehicles.update({
       where: { id: vehicleId },
       data: {
         isFavorite: !lastFavoriteVehicles,
+        updatedAt: new Date(),
       },
+      select: { isFavorite: true },
     });
+
+    return vehicleUpdated.isFavorite;
   }
 
   private async lastFavoriteVehicles(vehicleId: string): Promise<boolean> {
@@ -24,4 +28,4 @@ class SetFavoriteVehiclesImplementation implements ISetFavoriteVehiclesRepositor
   }
 }
 
-export { SetFavoriteVehiclesImplementation };
+export { ChangeStatusVehiclesImplementation };
