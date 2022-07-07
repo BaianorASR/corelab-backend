@@ -4,6 +4,7 @@ import { changeStatusVehiclesController } from '@/integrations/changeStatusFavor
 import { createVehiclesController } from '@/integrations/createVehicles.integration';
 import { deleteVehiclesController } from '@/integrations/deleteVehicles.integration';
 import { getAllVehiclesController } from '@/integrations/getAllVehicles.integration';
+import { getFavoritesVehiclesController } from '@/integrations/getFavoritesVehicles.integration';
 import { updateVehiclesController } from '@/integrations/updateVehicles.integration';
 import { validateVehicleData } from '@/middlewares/validateVehicleData.middleware';
 import { verifyIfVehicleExist } from '@/middlewares/verifyIfVehicleExist.middleware';
@@ -37,6 +38,14 @@ class Vehicles implements IRoutes {
       // verifyIfVehicleExist,
       async (request: Request, response: Response) => {
         await createVehiclesController.handle(request, response);
+      },
+    );
+
+    this.router.get(
+      `${this.path}/favorite`,
+      async (request: Request, response: Response) => {
+        console.log('oi');
+        await getFavoritesVehiclesController.handle(request, response);
       },
     );
 
