@@ -10,12 +10,13 @@ datasource db {
 model Vehicles {
   id          String   @id @default(uuid())
   name        String   @unique
+  brand       String
   description String
   plate       String
-  isFavorite  Boolean  @default(false)
-  year        Int
+  isFavorite  Boolean  @default(false) @map("is_favorite")
+  year        String
   color       String
   price       Int
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @default(now())
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @default(now()) @map("updated_at")
 }

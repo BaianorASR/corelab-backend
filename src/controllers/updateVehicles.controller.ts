@@ -20,6 +20,7 @@ class UpdateVehiclesController {
   private getVehicleInBody({ body }: Request): IUpdateVehiclesDTOs {
     return {
       name: body.name,
+      brand: body.brand,
       description: body.description,
       plate: body.plate,
       year: body.year,

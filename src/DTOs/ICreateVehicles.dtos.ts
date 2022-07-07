@@ -8,6 +8,10 @@ class ICreateVehiclesDTOs {
 
   @IsNotEmpty()
   @IsString()
+  brand: string;
+
+  @IsNotEmpty()
+  @IsString()
   @MinLength(10)
   description: string;
 
@@ -32,6 +36,7 @@ class ICreateVehiclesDTOs {
 
   constructor(
     name: string,
+    brand: string,
     description: string,
     plate: string,
     year: number,
@@ -39,6 +44,7 @@ class ICreateVehiclesDTOs {
     price: number,
   ) {
     this.name = name;
+    this.brand = brand;
     this.description = description;
     this.plate = plate;
     this.year = year;

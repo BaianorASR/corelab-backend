@@ -8,6 +8,9 @@ class IVehicleDTOs {
   public name: string;
 
   @IsString()
+  public brand: string;
+
+  @IsString()
   public description: string;
 
   @IsString()
