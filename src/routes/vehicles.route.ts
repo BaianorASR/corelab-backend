@@ -3,6 +3,7 @@ import { Request, Response, Router } from 'express';
 import { changeStatusVehiclesController } from '@/integrations/changeStatusFavoriteVehicles.integration';
 import { createVehiclesController } from '@/integrations/createVehicles.integration';
 import { deleteVehiclesController } from '@/integrations/deleteVehicles.integration';
+import { filterVehiclesController } from '@/integrations/filterVehicles.integration';
 import { filtersOptionsVehiclesController } from '@/integrations/filtersOptionsVehicles.integration';
 import { getAllVehiclesController } from '@/integrations/getAllVehicles.integration';
 import { getFavoritesVehiclesController } from '@/integrations/getFavoritesVehicles.integration';
@@ -46,7 +47,6 @@ class Vehicles implements IRoutes {
     this.router.get(
       `${this.path}/favorite`,
       async (request: Request, response: Response) => {
-        console.log('oi');
         await getFavoritesVehiclesController.handle(request, response);
       },
     );
@@ -60,9 +60,16 @@ class Vehicles implements IRoutes {
     );
 
     this.router.get(
-      `${this.path}/filters`,
+      `${this.path}/get_filters`,
       async (request: Request, response: Response) => {
         await filtersOptionsVehiclesController.handle(request, response);
+      },
+    );
+
+    this.router.get(
+      `${this.path}/filter`,
+      async (request: Request, response: Response) => {
+        await filterVehiclesController.handle(request, response);
       },
     );
 

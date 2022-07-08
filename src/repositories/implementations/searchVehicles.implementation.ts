@@ -26,7 +26,7 @@ export class SearchVehiclesImplementation implements ISearchVehicleRepository {
     };
 
     if (!Number.isNaN(+query)) {
-      ARGS.where.OR = [...ARGS.where.OR, { price: { equals: query } }];
+      ARGS.where.OR = [...ARGS.where.OR, { price: { equals: +query } }];
     }
 
     const vehicles = this.vehicles.findMany(ARGS);
