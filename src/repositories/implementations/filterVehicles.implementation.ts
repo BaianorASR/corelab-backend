@@ -9,15 +9,21 @@ import {
 export class FilterVehiclesImplementation implements IFilterVehiclesRepository {
   private vehicles = prismaClient.vehicles;
 
-  async filter(filters: IFilterData): Promise<IVehicleDTOs[]> {
+  async filter({
+    brand,
+    color,
+    year,
+    maxPrice,
+    minPrice,
+  }: IFilterData): Promise<IVehicleDTOs[]> {
     const filteredVehicles = await this.vehicles.findMany({
       where: {
-        brand: filters.brand,
-        color: filters.color,
-        year: filters.year,
+        brand: { contains: brand },
+        color: { contains: color },
+        year: { contains: year },
         price: {
-          gte: filters.minPrice,
-          lte: filters.maxPrice,
+          gte: minPrice ? +minPrice : undefined,
+          lte: maxPrice ? +maxPrice : undefined,
         },
       },
     });
