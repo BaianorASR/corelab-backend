@@ -11,6 +11,7 @@ class UpdateVehiclesImplementation implements IUpdateVehiclesRepository {
       where: { id: vehicleId },
       data: {
         ...vehicles,
+        updatedAt: new Date(),
       },
     });
   }

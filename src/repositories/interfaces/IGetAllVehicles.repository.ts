@@ -1,7 +1,5 @@
 import { IVehicleDTOs } from '@/DTOs/IVehicles.dtos';
 
-interface IGetAllVehiclesRepository {
+export interface IGetAllVehiclesRepository {
   getAllVehicles(): Promise<IVehicleDTOs[]>;
 }
-
-export { IGetAllVehiclesRepository };

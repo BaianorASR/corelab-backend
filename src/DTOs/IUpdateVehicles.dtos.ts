@@ -8,6 +8,10 @@ class IUpdateVehiclesDTOs {
 
   @IsNotEmpty()
   @IsString()
+  brand: string;
+
+  @IsNotEmpty()
+  @IsString()
   @MinLength(10)
   description: string;
 
@@ -17,9 +21,9 @@ class IUpdateVehiclesDTOs {
   plate: string;
 
   @IsNotEmpty()
-  @IsInt({})
-  @Min(1500)
-  year: number;
+  @IsString()
+  @MinLength(4)
+  year: string;
 
   @IsNotEmpty()
   @IsString()
@@ -32,13 +36,15 @@ class IUpdateVehiclesDTOs {
 
   constructor(
     name: string,
+    brand: string,
     description: string,
     plate: string,
-    year: number,
+    year: string,
     color: string,
     price: number,
   ) {
     this.name = name;
+    this.brand = brand;
     this.description = description;
     this.plate = plate;
     this.year = year;

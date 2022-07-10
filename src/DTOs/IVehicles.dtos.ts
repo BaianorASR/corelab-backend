@@ -8,6 +8,9 @@ class IVehicleDTOs {
   public name: string;
 
   @IsString()
+  public brand: string;
+
+  @IsString()
   public description: string;
 
   @IsString()
@@ -16,8 +19,8 @@ class IVehicleDTOs {
   @IsBoolean()
   public isFavorite?: boolean;
 
-  @IsInt()
-  public year: number;
+  @IsString()
+  public year: string;
 
   @IsString()
   public color: string;

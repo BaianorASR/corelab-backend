@@ -16,6 +16,7 @@ class CreateController {
   private getVehicleInBody({ body }: Request): ICreateVehiclesDTOs {
     const data: ICreateVehiclesDTOs = {
       name: body.name,
+      brand: body.brand,
       description: body.description,
       plate: body.plate,
       year: body.year,

@@ -8,7 +8,7 @@ import { HttpException } from '@/errors/HttpException';
 
 class ValidateVehicleData {
   public async validate(req: Request, res: Response, next: NextFunction) {
-    const { name, description, plate, year, color, price } = req.body;
+    const { name, description, plate, year, color, price, brand } = req.body;
 
     const METHODS_CLASS_DATA = {
       POST: ICreateVehiclesDTOs,
@@ -16,7 +16,15 @@ class ValidateVehicleData {
     };
 
     const ObjectToValidate = METHODS_CLASS_DATA[req.method];
-    const data = new ObjectToValidate(name, description, plate, year, color, price);
+    const data = new ObjectToValidate(
+      name,
+      brand,
+      description,
+      plate,
+      year,
+      color,
+      price,
+    );
     const errors = await validate(data);
 
     if (errors.length > 0) {

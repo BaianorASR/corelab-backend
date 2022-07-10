@@ -1,9 +1,13 @@
 import { Request, Response, Router } from 'express';
 
+import { changeStatusVehiclesController } from '@/integrations/changeStatusFavoriteVehicles.integration';
 import { createVehiclesController } from '@/integrations/createVehicles.integration';
 import { deleteVehiclesController } from '@/integrations/deleteVehicles.integration';
+import { filterVehiclesController } from '@/integrations/filterVehicles.integration';
+import { filtersOptionsVehiclesController } from '@/integrations/filtersOptionsVehicles.integration';
 import { getAllVehiclesController } from '@/integrations/getAllVehicles.integration';
-import { setFavoriteVehiclesController } from '@/integrations/setFavoriteVehicles.integration';
+import { getFavoritesVehiclesController } from '@/integrations/getFavoritesVehicles.integration';
+import { searchVehiclesController } from '@/integrations/searchVehicles.integration';
 import { updateVehiclesController } from '@/integrations/updateVehicles.integration';
 import { validateVehicleData } from '@/middlewares/validateVehicleData.middleware';
 import { verifyIfVehicleExist } from '@/middlewares/verifyIfVehicleExist.middleware';
@@ -40,11 +44,39 @@ class Vehicles implements IRoutes {
       },
     );
 
+    this.router.get(
+      `${this.path}/favorite`,
+      async (request: Request, response: Response) => {
+        await getFavoritesVehiclesController.handle(request, response);
+      },
+    );
+
     this.router.put(
-      `${this.path}/:id/favorite`,
+      `${this.path}/favorite/:id`,
       verifyIfVehicleExist,
       async (request: Request, response: Response) => {
-        await setFavoriteVehiclesController.handle(request, response);
+        await changeStatusVehiclesController.handle(request, response);
+      },
+    );
+
+    this.router.get(
+      `${this.path}/get_filters`,
+      async (request: Request, response: Response) => {
+        await filtersOptionsVehiclesController.handle(request, response);
+      },
+    );
+
+    this.router.get(
+      `${this.path}/filter`,
+      async (request: Request, response: Response) => {
+        await filterVehiclesController.handle(request, response);
+      },
+    );
+
+    this.router.get(
+      `${this.path}/search`,
+      async (request: Request, response: Response) => {
+        await searchVehiclesController.handle(request, response);
       },
     );
 
