@@ -14,9 +14,21 @@ export class FiltersOptionsVehiclesImplementation
 
   public async getFilterOptions(): Promise<IFiltersOptionsDTOs> {
     const [brand, year, color] = await prismaClient.$transaction([
-      this.vehicles.findMany({ select: { brand: true }, distinct: ['brand'] }),
-      this.vehicles.findMany({ select: { year: true }, distinct: ['year'] }),
-      this.vehicles.findMany({ select: { color: true }, distinct: ['color'] }),
+      this.vehicles.findMany({
+        select: { brand: true },
+        distinct: ['brand'],
+        orderBy: { brand: 'asc' },
+      }),
+      this.vehicles.findMany({
+        select: { year: true },
+        distinct: ['year'],
+        orderBy: { year: 'desc' },
+      }),
+      this.vehicles.findMany({
+        select: { color: true },
+        distinct: ['color'],
+        orderBy: { color: 'asc' },
+      }),
     ]);
 
     const filtersResults = {
